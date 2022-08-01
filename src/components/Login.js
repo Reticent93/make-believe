@@ -60,7 +60,7 @@ function checkLoginState() {
     <>
     <div>
         <h1>Login</h1>
-<div id='status' onClick={checkLoginState}></div>
+<button id='status' onClick={checkLoginState}></button>
     </div>
     </>
   )
