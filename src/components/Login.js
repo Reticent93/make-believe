@@ -4,7 +4,7 @@ const Login = () => {
     useEffect(() => {
         window.fbAsyncInit = () => {
             window.FB.init({
-                appId            : '697462714224402',
+                appId            : '1581438475584268',
                 autoLogAppEvents : true,
                 xfbml            : true,
                 version          : 'v14.0'
