@@ -11,6 +11,7 @@ const Home = () => {
         <p>This is the home page</p>
         <Link to ="/about">About</Link>
         <Link to ="/contact">Contact</Link>
+        <Link to ="/login">Login</Link>
         
         
     </div>
