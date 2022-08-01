@@ -23,6 +23,7 @@ const Login = () => {
 
     const onLoginClick = () => {
         window.FB.login();
+        console.log('clicked', window.FB.login);
     };
   return (
     <>
