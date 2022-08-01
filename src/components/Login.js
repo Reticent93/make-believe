@@ -60,7 +60,8 @@ function checkLoginState() {
     <>
     <div>
         <h1>Login</h1>
-<button id='status' onClick={checkLoginState}></button>
+        <div id='status' className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
+    data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={checkLoginState} />
     </div>
     </>
   )
