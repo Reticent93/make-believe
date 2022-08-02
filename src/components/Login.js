@@ -1,8 +1,8 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 const Login = () => {
+const [accessToken, setAccessToken] = useState('')
 
-let accessToken;
     useEffect(() => {
         window.fbAsyncInit = () => {
             window.FB.init({
@@ -14,10 +14,10 @@ let accessToken;
         };
         /* global FB */
         FB.getLoginStatus(function(response) {
-              var uid = response.authResponse.userID;
+            //   var uid = response.authResponse.userID;
               var accessToken = response.authResponse;
               console.log('logged in', accessToken)
-                console.log('logged in still', uid)
+                // console.log('logged in still', uid)
          
       }, true);
         (function (d, s, id) {
@@ -34,7 +34,7 @@ let accessToken;
         console.log('clicked', window.FB.login);
     };
     const onLogoutClick = () => {
-        window.FB.logout();
+        setAccessToken('')
     }
   return (
     <>
