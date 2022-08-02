@@ -40,10 +40,10 @@ const [accessToken, setAccessToken] = useState('')
     <>
     <div>
         <h1>Login</h1>
-        {accessToken ? 
+        
         <div id='status' className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
-    data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} /> :
-    <div onClick={onLogoutClick}/> }
+    data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} /> 
+    
     </div> 
 
     </>
