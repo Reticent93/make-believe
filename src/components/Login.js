@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 
 const Login = () => {
-const [accessToken, setAccessToken] = useState('')
+const [accessToken, setAccessToken] = useState({})
 
     useEffect(() => {
         window.fbAsyncInit = () => {
@@ -32,17 +32,18 @@ const [accessToken, setAccessToken] = useState('')
     const onLoginClick = () => {
         window.FB.login();
         console.log('clicked', window.FB.login);
+        FB.Event.subscribe('edge.create', function(response) {
+            window.top.location.href = 'url';
+        });
     };
-    const onLogoutClick = () => {
-        setAccessToken('')
-    }
+ 
   return (
     <>
     <div>
         <h1>Login</h1>
         
         <div id='status' className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
-    data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} /> 
+     data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} /> 
     
     </div> 
 
