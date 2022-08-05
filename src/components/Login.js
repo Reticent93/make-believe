@@ -1,7 +1,29 @@
+import jwtDecode from 'jwt-decode'
 import {useEffect, useState} from 'react'
 
 const Login = () => {
 const [accessToken, setAccessToken] = useState({})
+
+const handleCallbackResponse = (response) => {
+    console.log('Encoded response: ' + response.credential)
+    const userObj = jwtDecode(response.credential)
+    console.log(userObj)
+}
+
+    useEffect(() => {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: '956171547066-iolpv4b31uomqmkrvb1mph4cc8t7s81o.apps.googleusercontent.com',
+            callback: handleCallbackResponse,
+        });
+        
+        google.accounts.id.renderButton(
+            document.getElementById('google-signin'),
+            {theme: 'outline', size: 'medium' }
+        )
+        google.accounts.id.prompt();
+    },[])
+
 
     useEffect(() => {
         window.fbAsyncInit = () => {
@@ -44,8 +66,9 @@ const [accessToken, setAccessToken] = useState({})
         
         <div id='status' className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
      data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} /> 
-    
     </div> 
+
+    <div id='google-signin'></div>
 
     </>
   )
