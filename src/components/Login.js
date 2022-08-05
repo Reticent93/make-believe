@@ -3,11 +3,17 @@ import {useEffect, useState} from 'react'
 
 const Login = () => {
 const [accessToken, setAccessToken] = useState({})
+const [user, setUser] = useState({})
 
 const handleCallbackResponse = (response) => {
-    console.log('Encoded response: ' + response.credential)
     const userObj = jwtDecode(response.credential)
-    console.log(userObj)
+    setUser(userObj)
+    document.getElementById('google-signin').hidden = true
+}
+
+const handleSignOut = () => {
+    setUser({})
+    document.getElementById('google-signin').hidden = false
 }
 
     useEffect(() => {
@@ -23,6 +29,7 @@ const handleCallbackResponse = (response) => {
         )
         google.accounts.id.prompt();
     },[])
+
 
 
     useEffect(() => {
@@ -69,7 +76,15 @@ const handleCallbackResponse = (response) => {
     </div> 
 
     <div id='google-signin'></div>
-
+    {
+        Object.keys(user).length !== 0 && (
+            <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
+        )
+    }
+{user && <div>
+    <img src={user.picture} alt={user.name} />
+    <h3>{user.name}</h3>
+    </div>}
     </>
   )
 }
